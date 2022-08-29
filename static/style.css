@@ -7,22 +7,179 @@
 body {
     height: 100%;
     width: 100%;
-    display: inline-block;
 }
 
-.login {
-    float: right;
+p {
+    font-family: 'Anek Telugu', sans-serif;
+    font-size: 1.1em;
+
 }
 
-.heading {
-    font-size: 2em;
-    font-family: Aboreto, cursive;
-    bottom: 1px;
+.homepage {
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
     height: 80px;
     width: 60px;
+    display: inline-block;
+    margin-left: 2vw;
+}
+
+.heading {
+    font-size: 2em;
+    font-family: Aboreto, cursive;
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 1vw;
+}
+
+.searchbar {
+    height: 30px;
+    width: 55vw;
+    margin-top: 32px;
+    border: 1px solid black;
+    border-radius: 2em;
+    text-indent: 15px;
+}
+
+::placeholder {
+    color: black;
+    font-family: 'Anek Telugu', sans-serif;
+    font-size: 1.1em;
 
 }
+
+.items {
+    display: inline-block;
+    margin-top: 35px;
+    margin-right: 2vw;
+    word-spacing: 2em;
+}
+
+#login, #signup {
+    text-decoration: none;
+    font-family: Aboreto, cursive;
+    font-size: x-large;
+    color: black;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu {
+    display: inline-block;
+    word-spacing: 10vw;
+    margin-top: 15px;
+}
+
+#about, #gallery, #marketplace, #contact {
+    text-decoration: none;
+    font-family: Raleway, sans-serif;
+    color: black;
+    font-size: 1.2em;
+}
+
+#menu-content-hr {
+    margin-top: 1.5em;
+}
+
+
+
+
+.content {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 12px;
+    margin-top: 20px;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 12px;
+}
+
+#box-1-heading {
+    margin-top: -0.5em;
+    margin-bottom: 1em;
+    font-size: 1.75em;
+    font-family: Montserrat, sans-serif;
+}
+
+.hr {
+    display: flex;
+    background-color:blueviolet;
+    margin-top: -1em;
+    margin-bottom: 1em;
+}
+
+.image {
+    height: 512px;
+    width: 512px;
+}
+
+.caption {
+    font-family: 'Anek Telugu', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-style: italic;
+}
+
+
+
+
+
+
+/* /signup */
+
+.form-signup {
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 5%;
+    width: fit-content;
+    padding: 1em;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.signup-heading {
+
+}
+
+.signup-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+}
+
+#username, #email, #password, #confirm_password {
+    margin: 0.5em;
+    height: 2em;
+    width: 16em;
+    border: none;
+    border: 1px solid;
+    border-radius: 2em;
+    padding-left: 1em;
+}
+
+
+
+
+
+
 

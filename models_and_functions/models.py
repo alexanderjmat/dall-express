@@ -18,6 +18,7 @@ class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(150), nullable=False, unique=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
@@ -25,6 +26,7 @@ class User(db.Model):
     profile_url = db.Column(db.String(200))
     average_rating = db.Column(db.Float, default=0)
     number_of_photos = db.Column(db.Integer, default=0)
+    confirmation_hash = db.Column(db.String(100))
 
 class Image(db.Model):
     '''Image class'''
