@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section class="marketplace">
+
+<section class="categories">
+    <ul>
+        <li>Categories</li>
+        <ul>
+            <li>Oil Painting</li>
+            <li>Digital Art</li>
+        </ul>
+    </ul>
+
+
+</section>
+
+<hr>
+
+<section class="marketplace items">
+{% for item in items %}
+
+    <section class="marketplace item">
+        <img class="marketplace item-image" src="/static/content/gallery-images/{{item[0]}}" alt="">
+        <a class="item-link" href="/{{item[1]}}"><p class="item-text">{{item[1]}}</p></a>
+    </section>
+    {% if loop.index % 3 == 0 %} 
+    <div class="break"></div>
+    {% endif %}
+
+{% endfor %}
+</section>
+</section>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField
-from wtforms.validators import InputRequired, Optional, Email, EqualTo, Length
+from wtforms.validators import InputRequired, Optional, Email, EqualTo, Length, DataRequired
 
 def validate_password(form, field):
     uppercase_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -23,10 +23,22 @@ def validate_password(form, field):
 
 
 class SignUp(FlaskForm):
-    """Form for adding snacks."""
+    """Form for signing up"""
 
-    username = StringField(render_kw={"placeholder": "Username"}, validators=[InputRequired(), Length(min=6, max=20, message="Username must be between 6-20 characters")])
+    username = StringField(render_kw={"placeholder": "Username"}, validators=[InputRequired()])
     email = StringField(render_kw={"placeholder": "Email"}, validators=[InputRequired(), Email()])
-    password = StringField("Password: Must be at least 8 characters in length, and contain at least one uppercase letter, one lowercase letter, and one number", render_kw={"placeholder": "Password"}, validators=[InputRequired(), EqualTo('confirm_password', message='Passwords must match'), Length(min=8, message="Password must be at least 8 characters")])
+    password = StringField(render_kw={"placeholder": "Password"}, validators=[InputRequired(), EqualTo('confirm_password', message='Passwords must match'), Length(min=8, message="Password must be at least 8 characters")])
     confirm_password = StringField(render_kw={"placeholder": "Confirm"}, validators=[InputRequired(), validate_password])
+
+class Login(FlaskForm):
+    """Form for logging in"""
+
+    username = StringField(render_kw={"placeholder": "Username"}, validators=[InputRequired()])
+    password = StringField(render_kw={"placeholder": "Password"}, validators=[InputRequired()])
+
+class Contact(FlaskForm):
+    '''Form for contacting DEGA'''
+    name = StringField(render_kw={"placeholder": "Name"}, validators=[InputRequired()])
+    email = StringField(render_kw={"placeholder": "Email"}, validators=[InputRequired(), Email()])
+    message = StringField(render_kw={"placeholder": "Type your message here"}, validators=[InputRequired()])
 

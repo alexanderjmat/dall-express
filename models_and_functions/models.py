@@ -3,11 +3,12 @@ from types import ClassMethodDescriptorType
 from flask_sqlalchemy import SQLAlchemy
 # from sqlalchemy_imageattach.entity import Image, image_attachment
 import datetime
-import bcrypt
-
+from flask_bcrypt import Bcrypt
+import os
 
 
 db = SQLAlchemy()
+bcrypt = Bcrypt()
 
 def connect_db(app):
     db.app = app
@@ -21,23 +22,38 @@ class User(db.Model):
     email = db.Column(db.String(150), nullable=False, unique=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-    first_name = db.Column(db.String(100), nullable=False)
+    first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
     profile_url = db.Column(db.String(200))
     average_rating = db.Column(db.Float, default=0)
     number_of_photos = db.Column(db.Integer, default=0)
-    confirmation_hash = db.Column(db.String(100))
+    confirmation_code = db.Column(db.String(100))
+
+    @classmethod
+    def register(cls, email, username, password, profile_url, confirmation_code):
+        '''Register user for site'''
+        hashed_password = bcrypt.generate_password_hash(password)
+        utf8_password = hashed_password.decode('utf8')
+
+        return cls(email=email, username=username, password=utf8_password, profile_url=profile_url, confirmation_code=confirmation_code)
+    
+    @classmethod
+    def authenticate(cls, username, password):
+        '''Login user'''
+        user = User.query.filter_by(username=username).first()
+        if user and bcrypt.check_password_hash(user.password, password):
+            return user
+        else: 
+            return False
 
 class Image(db.Model):
     '''Image class'''
     __tablename__ = "images"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    image = db.Column(db.Text, unique=True, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    mimetype = db.Column(db.Text, nullable=False)
-    prompt = db.Column(db.String(400), unique=True, nullable=False)
-    posted_by = db.Column(db.Integer, db.ForeignKey('users.username'), nullable=False)
+    image = db.Column(db.Text, unique=True, nullable=True)
+    prompt = db.Column(db.String(400), unique=True, nullable=True)
+    posted_by = db.Column(db.String(20), default="None")
     average_rating = db.Column(db.Float, default=0)
     imagetag_assignment = db.relationship("ImageTag", backref="images")
 
@@ -56,7 +72,7 @@ class Tag(db.Model):
     __tablename__ = "tags"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(30), unique=True, nullable=False)
+    name = db.Column(db.String(30), unique=True)
     imagetag_assignment = db.relationship("ImageTag", backref="tags")
 
 class ImageTag(db.Model):
@@ -78,5 +94,10 @@ class ArtSubmission(db.Model):
     link_3 = db.Column(db.Text)
     link_4 = db.Column(db.Text)
     link_5 = db.Column(db.Text)
-    
+
+
+
+
+
+
 

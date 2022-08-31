@@ -19,11 +19,22 @@
 
     <section class="homepage logo-heading">
         <img class="homepage logo" src="/static/content/design/logo_homepage.png" alt="DALL·Express Logo" style="width:100%">
-        <h1 class="homepage heading">·Dega·</h1>
+        <a class="homepage link" href="/"><h1 class="homepage heading">·Dega·</h1></a>
     </section>
 
     <input class="homepage searchbar" type="text" placeholder="Search for art...">
+    {% if 'user_id' in session %}
+    <nav class="nav login">
+        <ul class="nav login menu">
+            <li class="nav login menu items">
+                <a id="signup" href="/u/{{user.username}}">{{user.username}}</a>
+                <a id="login" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
 
+    {% if 'user_id' not in session %}
     <nav class="nav login">
         <ul class="nav login menu">
             <li class="nav login menu items">
@@ -32,6 +43,7 @@
             </li>
         </ul>
     </nav>
+    {% endif %}
 
 </section>
 
