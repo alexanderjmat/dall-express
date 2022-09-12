@@ -51,8 +51,9 @@ class Image(db.Model):
     __tablename__ = "images"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    image = db.Column(db.Text, unique=True, nullable=True)
-    prompt = db.Column(db.String(400), unique=True, nullable=True)
+    image = db.Column(db.Text, unique=True, nullable=False)
+    prompt = db.Column(db.String(400), unique=True, nullable=False)
+    title = db.Column(db.String(400))
     posted_by = db.Column(db.String(20), default="None")
     average_rating = db.Column(db.Float, default=0)
     imagetag_assignment = db.relationship("ImageTag", backref="images")

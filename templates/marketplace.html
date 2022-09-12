@@ -1,28 +1,27 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<section class="marketplace">
+<section class="market">
 
-<section class="categories">
-    <ul>
-        <li>Categories</li>
-        <ul>
-            <li>Oil Painting</li>
-            <li>Digital Art</li>
-        </ul>
-    </ul>
+<section class="marketplace-heading">
 
+<h1 class="marketplace-header">All Artwork</h1>
 
+<nav class="marketplace-menu">
+    <a class="menu-style" href="/">Style</a>
+    <a class="menu-medium" href="/">Medium</a>
+
+</nav>
 </section>
 
-<hr>
+
+<section class="marketplace">
 
 <section class="marketplace items">
 {% for item in items %}
 
     <section class="marketplace item">
-        <img class="marketplace item-image" src="/static/content/gallery-images/{{item[0]}}" alt="">
-        <a class="item-link" href="/{{item[1]}}"><p class="item-text">{{item[1]}}</p></a>
+        <a class="item-link" href="/marketplace/{{item.id}}"><img class="marketplace item-image" src="/static/content/gallery-images/{{item.image}}" alt=""></a>
     </section>
     {% if loop.index % 3 == 0 %} 
     <div class="break"></div>
@@ -31,5 +30,5 @@
 {% endfor %}
 </section>
 </section>
-
+</section>
 {% endblock %}

@@ -6,14 +6,21 @@
 }
 
 body {
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 p {
     font-family: 'Anek Telugu', sans-serif;
     font-size: 1.1em;
 
+}
+
+footer {
+    display: flex;
+    height: 10vh;
 }
 
 .homepage {
@@ -42,9 +49,11 @@ p {
 }
 
 .searchbar {
-    height: 30px;
-    width: 55vw;
-    margin-top: 32px;
+    height: 3em;
+    width: 60em;
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
     border: 1px solid black;
     border-radius: 2em;
     text-indent: 15px;
@@ -73,6 +82,11 @@ p {
     color: black;
 }
 
+#cart {
+    margin-right: 3em;
+    height: 110%;
+}
+
 .navigation {
     display: flex;
     justify-content: center;
@@ -95,24 +109,50 @@ p {
     margin-top: 1.5em;
 }
 
-
+.heading-animations {
+    display: flex;
+    height: 100px;
+    border: 1px solid grey;
+}
 
 
 .content {
     display: flex;
-    flex-direction: row-reverse;
     margin: 12px;
     margin-top: 20px;
+    width: 100vw;
+    height: 800px;
+    align-items: center;
+    flex-direction: column;
+
 }
 
-.article {
+.box {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 12px;
+    justify-content: center;
+    margin-top: 2em;
+
 }
+
+.boxleft {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    background: rgb(128, 0, 255);
+    display: flex;
+}
+
+.boxright {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    background: rgb(128, 0, 255);
+    display: flex;
+}
+
 
 #box-1-heading {
+    display: flex;
     margin-top: -0.5em;
     margin-bottom: 1em;
     font-size: 1.75em;
@@ -129,6 +169,7 @@ p {
 .image {
     height: 512px;
     width: 512px;
+    border: 0.5em solid black;
 }
 
 .caption {
@@ -227,15 +268,67 @@ p {
 
 /* Marketplace */
 
-.marketplace {
-    display: flex;
-}
-
-.categories {
-    font-size: 24px;
+.market {
     display: flex;
     flex-direction: column;
-    width:max-content;
+}
+
+
+
+.marketplace {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(230, 230, 230, 0.9);
+}
+
+.marketplace-heading {
+    background: url('/static/content/design/DALL·E\ 2022-09-12\ 09.28.28\ -\ modern\ oil\ painting\ of\ a\ black\ night\ sky.jpeg');
+    background-position: center;
+    height: 250px;
+}
+
+
+.marketplace-header {
+    display: flex;
+    justify-content: center;
+    font-family: 'Anek Telugu', sans-serif;
+    font-weight: 300;
+    font-size: 2.5em;
+    padding: 1em;
+    color: white;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.marketplace-menu {
+    display: flex;
+    justify-content: center;
+}
+
+
+.menu-style, .menu-medium {
+    text-decoration: none;
+    font-family: Aboreto, sans-serif;
+    color: white;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding: 1em 1.5em 1em 1.5em;
+    border: 0.05em solid lightgrey;
+    border-radius: 0.5em;
+    
+}
+
+.menu-style:hover, .menu-medium:hover {
+    background-color: rgba(127, 0, 256, 0.2);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: end;
+
 }
 
 .items {
@@ -245,36 +338,122 @@ p {
 }
 
 .item {
+    display: flex;
     border: 25px solid;
     border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23AAAAAA' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3Cpath d='M8 8h16v16H8zM51 8h16v16H51zM51 51h16v16H51zM8 51h16v16H8z'/%3E%3C/g%3E%3Cg fill='%23B88846'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='59' cy='16' r='2'/%3E%3Ccircle cx='59' cy='59' r='2'/%3E%3Ccircle cx='16' cy='59' r='2'/%3E%3C/g%3E%3C/svg%3E") 30;
-    width: 25%;
-    margin: 1em;
-}
+    width: 23em;
+    height: 23em;
+    margin: 2em;
+    margin-top: 0;
 
-.item-text {
-    word-spacing: normal;
-    margin: 1em;
-    height:fit-content;
-    width: fit-content;
-}
-
-.break {
-    flex-basis: 100%;
-    height: 0;
-}
-
-.item-image {
-    /* display: flex; */
-    margin-top: 1em;
-    width: 75%;
-    height: 75%;
-    border: 2px solid black;
 }
 
 .item-link {
-    text-decoration: none;
-    color: black;
+    display: flex;
+    margin-left: -0.09em;
 }
+
+.break {
+    flex-basis: 0%;
+    height: 10px;
+}
+
+.item-image {
+    display: flex;
+    width: 23.35em;
+    height: 23.4em;
+    margin-top: -0.1em;
+    border: 2px solid black;
+}
+
+/* Item page */
+
+.item-heading {
+    display: flex;
+    margin-bottom: 15em;
+    justify-content: center;
+}
+
+.item-display {
+    display: flex;
+    height: 512px;
+    width: 512px;
+    margin-top: 7em;
+    margin-left: 3em;
+    border: 10px solid white;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5em;
+    margin-top: 25em;
+    color: white;
+}
+
+.item-info-h1 {
+    display: flex;
+    font-size: 3em;
+    font-weight: 400;
+}
+
+.item-info-price-canvas {
+    display: none;
+
+}
+
+.item-info-price-digital {
+    display: none;
+
+}
+
+.item-info-hr {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.item-info-type {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.item-info-select {
+    height: 3em;
+    width: 30em;
+    border-radius: 2em;
+    text-indent: 2em;
+    font-size: 1em;
+}
+
+.item-cart {
+    display: flex;
+    margin-top: 6em;
+
+
+}
+
+.item-cart-button {
+    height: 4em;
+    width: 25em;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    border: none;
+    border-radius: 3em;
+    font-size: 24px;
+
+}
+
+.item-cart-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+
+
+}
+
+
+
 
 
 /* Contact */
@@ -336,3 +515,5 @@ p {
     width: 12em;
     margin-top: 1em;
 }
+
+

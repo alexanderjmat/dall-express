@@ -9,6 +9,7 @@ import os
 
 app = Flask(__name__)
 User = models.User
+Image = models.Image
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///dallexpress'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -19,6 +20,8 @@ debug = DebugToolbarExtension(app)
 
 
 models.connect_db(app)
+models.db.drop_all()
+models.db.create_all()
 
 
 images_for_prototype = []
@@ -28,8 +31,10 @@ for file in os.listdir("static/content/gallery-images"):
         
         file_title = file[29:-4]
         file_title = file_title
-
-        images_for_prototype.append([file, file_title])
+        new_image = models.Image(image=file, prompt=file_title)
+        images_for_prototype.append(new_image)
+        models.db.session.add(new_image)
+        models.db.session.commit()
 
 
 @app.route('/')
@@ -116,6 +121,17 @@ def marketplace():
     if "user_id" in session:
         user = User.query.filter_by(id=session["user_id"]).first()
         return render_template('marketplace.html', user=user, items=marketplace_items)
+
+@app.route("/marketplace/<int:id>")
+def marketplace_item(id):
+    item = Image.query.filter_by(id=id).first()
+    if "user_id" not in session:
+        return render_template('marketplace-item.html', item=item)
+    if "user_id" in session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        return render_template('marketplace-item.html', user=user, item=item)
+
+
 
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():

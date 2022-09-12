@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section class="item-heading" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/static/content/gallery-images/{{item.image}}'); height: 600px; display: flex; background-position: center; background-repeat:no-repeat; background-size: cover;">
+    <section class="item-display">
+        <img class="item-display-image" src="/static/content/gallery-images/{{item.image}}" alt="">
+
+    </section>
+    <section class="item-info">
+        <h1 class="item-info-h1">
+            Artwork No.{{item.id}}
+        </h1>
+        <p class="item-info-price-poster">$39.99</p>
+        <p class="item-info-price-canvas">$199.99</p>
+        <p class="item-info-price-digital">$4.99</p>
+        <hr class="item-info-hr">
+        <p class="item-info-prompt">
+            Prompt: {{item.prompt}}
+        </p>
+        <div class="item-info-type">
+            <label for="select">Type</label>
+            <select class="item-info-select" name="select" id="">
+                <option value="0">Glossed Poster (18x24)</option>
+                <option value="1">Canvas (24x24)</option>
+                <option value="2">Ultra-HD Digital Photo (8192x8192)</option>
+            </select>
+        </div>
+        <div class="item-cart">
+            <button class="item-cart-button">Add to Cart</button>
+        
+        </div>
+
+    </section>
+
+</section>
+
+
+{% endblock %}
