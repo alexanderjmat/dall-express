@@ -4,6 +4,7 @@ from psycopg2 import connect
 from models_and_functions import models, forms
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 import bcrypt
 import os
 
@@ -39,11 +40,17 @@ for file in os.listdir("static/content/gallery-images"):
 
 @app.route('/')
 def home():
+    photos = []
+    new_arrivals = []
+    for image in images_for_prototype:
+        new_arrivals.append(image)
+        if len(photos) < 21:
+            photos.append(image)
     if "user_id" not in session:
-        return render_template('index.html')
+        return render_template('index.html', photos=photos, arrivals=new_arrivals)
     if "user_id" in session:
         user = User.query.filter_by(id=session["user_id"]).first()
-        return render_template('index.html', user=user)
+        return render_template('index.html', user=user, photos=photos, arrivals=new_arrivals)
 
 
 
@@ -130,6 +137,25 @@ def marketplace_item(id):
     if "user_id" in session:
         user = User.query.filter_by(id=session["user_id"]).first()
         return render_template('marketplace-item.html', user=user, item=item)
+
+@app.route("/marketplace/style/<option>")
+def marketplace_style(option):
+    items = Image.query.filter(Image.prompt.ilike((f"%{option}%"))).all()
+    if "user_id" not in session:
+        return render_template('marketplace.html', items=items, option=option)
+    if "user_id" in session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        return render_template('marketplace.html', user=user, items=items, option=option)
+
+@app.route("/marketplace/medium/<option>")
+def marketplace_medium(option):
+    items = Image.query.filter(Image.prompt.ilike((f"%{option}%"))).all()
+    if "user_id" not in session:
+        return render_template('marketplace.html', items=items, option=option)
+    if "user_id" in session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        return render_template('marketplace.html', user=user, items=items, option=option)
+
 
 
 

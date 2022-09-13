@@ -1,6 +1,6 @@
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField
+from wtforms import StringField, FloatField, PasswordField, EmailField, TextAreaField
 from wtforms.validators import InputRequired, Optional, Email, EqualTo, Length, DataRequired
 
 def validate_password(form, field):
@@ -25,20 +25,20 @@ def validate_password(form, field):
 class SignUp(FlaskForm):
     """Form for signing up"""
 
-    username = StringField(render_kw={"placeholder": "Username"}, validators=[InputRequired()])
-    email = StringField(render_kw={"placeholder": "Email"}, validators=[InputRequired(), Email()])
-    password = StringField(render_kw={"placeholder": "Password"}, validators=[InputRequired(), EqualTo('confirm_password', message='Passwords must match'), Length(min=8, message="Password must be at least 8 characters")])
-    confirm_password = StringField(render_kw={"placeholder": "Confirm"}, validators=[InputRequired(), validate_password])
+    username = StringField("Username", validators=[InputRequired()])
+    email = EmailField("Email", validators=[InputRequired(), Email()])
+    password = PasswordField("Password", validators=[InputRequired(), EqualTo('confirm_password', message='Passwords must match'), Length(min=8, message="Password must be at least 8 characters")])
+    confirm_password = StringField("Confirm Password", validators=[InputRequired(), validate_password])
 
 class Login(FlaskForm):
     """Form for logging in"""
 
-    username = StringField(render_kw={"placeholder": "Username"}, validators=[InputRequired()])
-    password = StringField(render_kw={"placeholder": "Password"}, validators=[InputRequired()])
+    username = StringField("Username", validators=[InputRequired()])
+    password = PasswordField("Password", validators=[InputRequired()])
 
 class Contact(FlaskForm):
     '''Form for contacting DEGA'''
-    name = StringField(render_kw={"placeholder": "Name"}, validators=[InputRequired()])
-    email = StringField(render_kw={"placeholder": "Email"}, validators=[InputRequired(), Email()])
-    message = StringField(render_kw={"placeholder": "Type your message here"}, validators=[InputRequired()])
+    name = StringField("Name", validators=[InputRequired()])
+    email = EmailField("Email", validators=[InputRequired(), Email()])
+    message = TextAreaField("Message", validators=[InputRequired()])
 

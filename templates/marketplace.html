@@ -5,11 +5,30 @@
 
 <section class="marketplace-heading">
 
-<h1 class="marketplace-header">All Artwork</h1>
+<h1 class="marketplace-header"><a class="marketplace-header-link" href="/marketplace">All Artwork</a></h1>
 
 <nav class="marketplace-menu">
-    <a class="menu-style" href="/">Style</a>
-    <a class="menu-medium" href="/">Medium</a>
+    <div class="menu-style">
+        <button class="menu-dropdown">Style
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="menu-dropdown-content">
+            <a href="/marketplace/style/modern">Modern</a>
+            <a href="/marketplace/style/renaissance">Renaissance</a>
+            <a href="/marketplace/style/postmodern">Postmodern</a>
+            <a href="/marketplace/style/surrealist">Surrealist</a>
+        </div>
+    </div>
+    <div class="menu-medium">
+        <button class="menu-dropdown">Medium             
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="menu-dropdown-content">
+            <a href="/marketplace/medium/oil">Oil</a>
+            <a href="/marketplace/medium/pastel">Pastel</a>
+            <a href="/marketplace/medium/digital">Digital Art</a>
+        </div>
+    </div>
 
 </nav>
 </section>

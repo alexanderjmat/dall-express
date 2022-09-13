@@ -1,6 +1,10 @@
+
+
 const box = document.querySelector('.box')
+
+//function borrowed and modified from codepen: https://codepen.io/GreenSock/pen/mdqXLZL
 setTimeout(function () {
-  // gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 let limit = {max: 100, pullRatio: 0},
     getRandom = () => gsap.utils.random(-limit.max, limit.max),
@@ -26,12 +30,12 @@ function wander(element, homeX, homeY) {
       x: getModifier(homeX),
       y: getModifier(homeY)
     },
-    duration: gsap.utils.random(1.5, 4), 
-    ease: "sine.inOut",
+    duration: gsap.utils.random(2.5, 4), 
+    ease: "tan.inOut",
     onComplete: () => wander(element, homeX, homeY)
   });
 }
-}, 1000)
+}, 100)
 
 setTimeout(function () {
   // gsap.registerPlugin(ScrollTrigger);
@@ -60,9 +64,31 @@ function wander(element, homeX, homeY) {
       x: getModifier(homeX),
       y: getModifier(homeY)
     },
-    duration: gsap.utils.random(1.5, 4), 
-    ease: "sine.inOut",
+    duration: gsap.utils.random(2.5, 4), 
+    ease: "cosine.inOut",
     onComplete: () => wander(element, homeX, homeY)
   });
 }
-}, 1000)
+}, 100)
+
+
+setTimeout(function () {
+  $('.item-info-select').change(function() {
+    if ($(this).val() == 0) {
+      $('.item-info-price-canvas').css('display', 'none')
+      $('.item-info-price-poster').css('display', 'flex')
+      $('.item-info-price-digital').css('display', 'none')
+    }
+    if ($(this).val() == 1) {
+      $('.item-info-price-canvas').css('display', 'flex')
+      $('.item-info-price-poster').css('display', 'none')
+      $('.item-info-price-digital').css('display', 'none')
+    }
+    if ($(this).val() == 2) {
+      $('.item-info-price-canvas').css('display', 'none')
+      $('.item-info-price-poster').css('display', 'none')
+      $('.item-info-price-digital').css('display', 'flex')
+    }
+  });
+
+}, 500)

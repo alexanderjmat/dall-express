@@ -17,6 +17,7 @@
     {% for field in form
            if field.widget.input_type != 'hidden' %}
     <p id="{{field.placeholder}}">
+      {{field.label}}
       {{ field }}
   
       {% for error in field.errors %}

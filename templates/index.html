@@ -22,7 +22,20 @@
         <a class="homepage link" href="/"><h1 class="homepage heading">·Dega·</h1></a>
     </section>
 
-    <input class="homepage searchbar" type="text" placeholder="Search for art...">
+    <section class="navigation">
+
+        <nav class="navigation main">
+            <ul class="navigation-main-ul">
+                <li class="navigation main main-menu">
+                    <a id="about" href="/about">About</a>
+                    <a id="marketplace" href="/marketplace">Marketplace</a>
+                    <a id="contact" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    
+    </section>
+
     {% if 'user_id' in session %}
     <nav class="nav login">
         <ul class="nav login menu">
@@ -49,45 +62,51 @@
 
 </section>
 
-<section class="navigation">
-
-    <nav class="navigation main">
-        <ul>
-            <li class="navigation main main-menu">
-                <a id="about" href="/about">About</a>
-                <a id="gallery" href="/gallery">Gallery</a>
-                <a id="marketplace" href="/marketplace">Marketplace</a>
-                <a id="contact" href="/contact">Contact</a>
-            </li>
-        </ul>
-    </nav>
-
-</section>
-
 <hr id="menu-content-hr">
 
 
 {% block content %}
 
+<div class="maincontent">
 <section class="content">
     <h2 id="box-1-heading">Welcome to the DALL·Express Gallery of Art</h2>
     <div class="box">
-        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.12\ -\ Atlantis\ by\ Salvador\ Dali.png'); background-size: cover;"></div>
-        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.19\ -\ Renaissance\ Cubism.png'); background-size: cover;"></div>
-        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.31\ -\ The\ Metro\,\ abstract\ oil\ on\ canvas.png'); background-size: cover;"></div>
-        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.48.06\ -\ Nocturne\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
-        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.47.58\ -\ Reflets\ dans\ l\'eau\,\ oil.png'); background-size: cover;"></div>
-        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.59\ -\ The\ weeping\ willow\ tree\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
-        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.18\ -\ Fantasy\ art\ of\ a\ tropical\ island.png'); background-size: cover;"></div>
-        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.11.51\ -\ The\ withering\ of\ the\ boughs\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
-        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.49\ -\ Surrealist\ painting\ of\ a\ grand\ piano.png'); background-size: cover;"></div>
-        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.45.36\ -\ pastel\ painting\ of\ a\ bouquet\ of\ flowers.png'); background-size: cover;"></div>
+        {% for photo in photos %}
+            {% if loop.index % 2 == 0 %}
+            <a href="/marketplace/{{photo.id}}"><div class="boxleft" style="background: url('/static/content/gallery-images/{{photo.image}}'); background-size: cover;"></div></a>
+            {% endif %}
+            {% if loop.index % 2 != 0 %}
+            <a href="/marketplace/{{photo.id}}"><div class="boxright" style="background: url('/static/content/gallery-images/{{photo.image}}'); background-size: cover"></div></a>
+            {% endif %}
+        {% endfor %}
     </div>
+    <h3 id="box-1-description">The first online marketplace exclusively devoted to artwork created by DALL·E 2</h3>
 </section>
+
+<section class="new-arrivals">
+    <h3 class="header">Newest Art</h3>
+    <div class="images">
+        {% for arrival in arrivals %}
+        <a class="link" href="/marketplace/{{arrival.id}}"><img class="image" src="/static/content/gallery-images/{{arrival.image}}" alt=""></a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+</div>
+
+
+
 {% endblock %}
 
 <footer>
-    <hr>
+    <div class="footer">
+        <p class="flask">Powered by Flask</p>
+        <p class="copyright">©2022, DALL·Express Gallery of Art</p>
+        <p class="notice">DEGA is not affiliated with or sponsored by OpenAI</p>
+    </div>
+
    
 </footer>
 
@@ -98,3 +117,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
 </body>
 </html>
+
+<!--<div class="box">
+        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.12\ -\ Atlantis\ by\ Salvador\ Dali.png'); background-size: cover;"></div>
+        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.19\ -\ Renaissance\ Cubism.png'); background-size: cover;"></div>
+        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.10.31\ -\ The\ Metro\,\ abstract\ oil\ on\ canvas.png'); background-size: cover;"></div>
+        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.48.06\ -\ Nocturne\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
+        <div class="boxleft" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.47.58\ -\ Reflets\ dans\ l\'eau\,\ oil.png'); background-size: cover;"></div>
+        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.59\ -\ The\ weeping\ willow\ tree\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
+        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.18\ -\ Fantasy\ art\ of\ a\ tropical\ island.png'); background-size: cover;"></div>
+        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-08-27\ 11.11.51\ -\ The\ withering\ of\ the\ boughs\,\ oil\ on\ canvas.png'); background-size: cover;"></div>
+        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.46.49\ -\ Surrealist\ painting\ of\ a\ grand\ piano.png'); background-size: cover;"></div>
+        <div class="boxright" style="background: url('/static/content/gallery-images/DALL·E\ 2022-09-05\ 08.45.36\ -\ pastel\ painting\ of\ a\ bouquet\ of\ flowers.png'); background-size: cover;"></div>
+    </div>-->
