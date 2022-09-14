@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="cart">
+    <h1>Shopping Cart</h1>
+<section class="cart-items">
+{% if items %}
+    {% for item in items %} 
+    <section class="cart-item">
+        <div class="cart-image">
+            <a href="/marketplace/{{item.images.id}}"><img src="/static/content/gallery-images/{{item.images.image}}" alt="" style="height: 250px; width: 250px"></a>
+        </div>
+        <div class="cart-info">
+            <h2>Artwork No.{{item.images.id}}</h1>
+            <ul>
+            {% if item.painting_type == 0 %}
+            <li>Format: Glossed Poster (18x24)</li>
+            {% elif item.painting_type == 1 %}
+            <li>Format: Canvas (24x24) </li>
+            {% elif item.painting_type == 2 %}
+            <li>Format: Ultra-HD Digital Photo (8192x8192)</li>
+            {% endif %}
+            <li>Free Shipping</li>
+            <li>{{item.images.prompt}}</li>
+            </ul>
+            <a href="/remove/{{item.id}}">Remove</a>
+            <hr>
+        </div>
+        <div class="cart-price">
+            {% if item.painting_type == '0' %}
+            <p>$39.99</p>
+            {% elif item.painting_type == '1' %}
+            <p>$199.99</p>
+            {% elif item.painting_type == '2' %}
+            <p>$4.99</p>
+            {% endif %}
+        </div>
+    </section>
+    {% endfor %}
+{% else %}
+<h1>Your cart is currently empty</h1>
+{% endif %}
+
+</section>
+<div class="checkout">
+    <button>Continue Shopping</button>
+    <button>Checkout</button>
+</div>
+
+</div>
+
+
+{% endblock %}

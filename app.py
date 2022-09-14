@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template,  redirect, flash, session
+from flask import Flask, request, render_template,  redirect, flash, session, g
 from flask_debugtoolbar import DebugToolbarExtension
 from psycopg2 import connect
 from models_and_functions import models, forms
@@ -7,6 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 import bcrypt
 import os
+
+CURRENT_USER = "curr_user"
 
 app = Flask(__name__)
 User = models.User
@@ -36,6 +38,24 @@ for file in os.listdir("static/content/gallery-images"):
         images_for_prototype.append(new_image)
         models.db.session.add(new_image)
         models.db.session.commit()
+
+@app.before_request
+def add_user_to_session():
+    if CURRENT_USER in session:
+        g.user = User.query.get(session[CURRENT_USER])
+    else:
+        g.user = None
+def do_login(user):
+    """Log in user."""
+
+    session[CURRENT_USER] = user.id
+
+
+def do_logout():
+    """Logout user."""
+
+    if CURRENT_USER in session:
+        del session[CURRENT_USER]
 
 
 @app.route('/')
@@ -161,12 +181,31 @@ def marketplace_medium(option):
         user = User.query.filter_by(id=session["user_id"]).first()
         return render_template('marketplace.html', user=user, items=items, option=option)
 
+@app.route("/add", methods=["POST"])
+def marketplace_add_to_cart():
+    import pdb
+    option = request.form['select']
+    referer = request.headers['Referer']
+    item = referer[34:]
+    if "user_id" not in session:
+        flash("Please make an account")
+        return redirect("/signup")
+    if "user_id" in session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        # pdb.set_trace()
+
+        cart_item = models.UserCart(user_username=user.username, painting_id=item, painting_type=option)
+        models.db.session.add(cart_item)
+        models.db.session.commit()
+        return redirect(f'/marketplace')
+
 
 
 
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():
     form = forms.Contact()
+    import pdb
     if "user_id" not in session:
         if form.validate_on_submit():
             name = form.name.data
@@ -186,10 +225,32 @@ def contact():
             message = form.message.data
             flash(f"Thanks for your message, {name}! We'll get back to you as soon as possible.")
         else:
-            return render_template('contact.html', form=form)
+            return render_template('contact.html', form=form, user=user)
 
-        return redirect('/contact', user=user)
-    
+        return redirect('/contact')
+
+@app.route("/u/<username>")
+def user_profile(username):
+    if not g.user:
+        redirect("/")
+    user = User.query.filter_by(username=username).first()
+    return render_template('user_profile.html', user=user)
+
+@app.route("/cart")
+def cart():
+    if "user_id" not in session:
+        flash("Please make an account")
+        return redirect("/signup")
+    if "user_id" in session:
+        import pdb
+        user = User.query.filter_by(id=session["user_id"]).first()
+        items = models.UserCart.query.filter_by(user_username=user.username).all()
 
 
+        return render_template("cart.html", user=user, items=items)
 
+@app.route("/remove/<int:id>")
+def remove_item_from_cart(id):
+    item = models.UserCart.query.filter_by(id=id).delete()
+    models.db.session.commit()
+    return redirect("/cart")

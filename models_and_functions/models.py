@@ -28,6 +28,8 @@ class User(db.Model):
     average_rating = db.Column(db.Float, default=0)
     number_of_photos = db.Column(db.Integer, default=0)
     confirmation_code = db.Column(db.String(100))
+    cart_assignment = db.relationship("UserCart", backref="users")
+
 
     @classmethod
     def register(cls, email, username, password, profile_url, confirmation_code):
@@ -57,6 +59,7 @@ class Image(db.Model):
     posted_by = db.Column(db.String(20), default="None")
     average_rating = db.Column(db.Float, default=0)
     imagetag_assignment = db.relationship("ImageTag", backref="images")
+    cart_assignment = db.relationship("UserCart", backref="images")
 
 class UserImages(db.Model):
 
@@ -83,6 +86,18 @@ class ImageTag(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     tag_name = db.Column(db.String(30), db.ForeignKey("tags.name"), primary_key=True)
     image_id = db.Column(db.Integer, db.ForeignKey("images.id"), primary_key=True)
+
+class UserCart(db.Model):
+    '''User cart'''
+    __tablename__ = "cart"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_username = db.Column(db.String(20), db.ForeignKey("users.username"), primary_key=True)
+    painting_id = db.Column(db.Integer, db.ForeignKey("images.id"), primary_key=True)
+    painting_type = db.Column(db.String(50), nullable=False)
+
+
+
 
 class ArtSubmission(db.Model):
     '''Class for artwork submissions'''

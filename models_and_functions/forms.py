@@ -28,7 +28,7 @@ class SignUp(FlaskForm):
     username = StringField("Username", validators=[InputRequired()])
     email = EmailField("Email", validators=[InputRequired(), Email()])
     password = PasswordField("Password", validators=[InputRequired(), EqualTo('confirm_password', message='Passwords must match'), Length(min=8, message="Password must be at least 8 characters")])
-    confirm_password = StringField("Confirm Password", validators=[InputRequired(), validate_password])
+    confirm_password = PasswordField("Confirm Password", validators=[InputRequired(), validate_password])
 
 class Login(FlaskForm):
     """Form for logging in"""

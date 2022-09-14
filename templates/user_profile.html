@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section class="account">
+    <h1 class="heading">{{user.username}}'s Account</h1>
+    <div class="details">
+        <h2>Account info</h2>
+        <ul>
+            <li>{{user.username}}</li>
+            <li>{{user.email}}</li>
+            <li>Average Photo Rating: {{user.average_rating}}</li>
+            <li>Purchases: None</li>
+
+        </ul>
+
+    </div>
+    <div class="orders">
+        <h2>Order history</h2>
+        <p>No orders yet</p>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -6,6 +6,7 @@
 }
 
 html, body {
+    height: fit-content;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -602,6 +603,106 @@ footer {
     font-size: 1em;
    
 }
+
+/* User Profile */
+
+.account {
+    display: flex;
+    background-color: rgba(240, 240, 240, 0.9);
+    height: 400px;
+    flex-direction: column;
+}
+
+.account .heading {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.account .details, .account .orders  {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    flex-direction: column;
+}
+
+.details h2, .orders h2 {
+    display: flex;
+    flex-direction: column;
+    font-size: 2em;
+}
+
+.details ul li {
+    list-style-type:none;
+    font-family: 'Anek Telugu', sans-serif;
+    font-size: 1em;
+}
+
+/* Cart */
+
+.cart {
+    background-color: rgba(230, 230, 230, 0.9);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.cart h1 {
+    text-align: center;
+}
+
+.cart-items {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 4em;
+    padding: 2em;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-info {
+    padding-left: 2em;
+}
+
+.cart-price p {
+    display: flex;
+    margin-left: 29em;
+    width: fit-content;
+}
+
+.checkout {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.checkout button {
+    margin: 2em;
+    padding: 0.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.85);
+    height: 3em;
+    width: 10em;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 1.5em;
+
+}
+
 
 
 

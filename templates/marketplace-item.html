@@ -19,6 +19,7 @@
             Prompt: {{item.prompt}}
         </p>
         <div class="item-info-type">
+    <form action="/add" method="POST"> 
             <label for="select">Type</label>
             <select class="item-info-select" name="select" id="">
                 <option value="0">Glossed Poster (18x24)</option>
@@ -27,9 +28,10 @@
             </select>
         </div>
         <div class="item-cart">
-            <button class="item-cart-button">Add to Cart</button>
-        
+            <button type="submit" class="item-cart-button">Add to Cart</button>
         </div>
+    </form>
+
 
     </section>
 
