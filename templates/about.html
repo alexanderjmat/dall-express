@@ -1,5 +1,51 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<section class="about">
+    <div class="head">
+        <h1 class="header">About ·DEGA·</h1>
+    </div>
+
+    <div class="content">
+        <article class="about-article">
+            <h2>Welcome!</h2>
+            <p>
+                The DALL·Express Gallery of Art (·DEGA·) sells artwork, designs, and other pieces that were created by DALL·E 2. 
+                Our goal is to share pieces that create emotion, stimulate the imagination, and won't break the bank. We'd like everyone to be able to own a piece of art, and ·DEGA· is a step towards that.
+
+            </p>
+
+        </article>
+        <article class="about-article">
+            <h2>What is DALL·E 2?</h2>
+            <p>
+                <a href="https://openai.com/dall-e-2/">DALL·E 2</a> is a system created by OpenAI that generates images from natural language descriptions. For example, <a href="/marketplace/{{cat_photo.id}}">this was the result</a> when I typed "Grey and white cat wearing a cowboy hat while riding a brown donkey impressionist oil painting" into DALL·E 2. <br><br>
+                It achieves this by analyzing millions of photos on Google and the correlation to their corresponding alt tags. An alt tag is a hidden description of a photograph that allows people with screen readers to understand the content of the photo. This data allows the system to pinpoint trends that exist between pixel-distribution and text, which are then manipulated through a complex process called diffusion. Diffusion creates a low-resolution image and gradually enhances it as the system recognizes aspects of the picture that properly correlate to the previously acquired trends in data. <br><br>
+                The amazing thing about DALL·E 2 is that it allows people to use their verbal imaginations to interact with the visual world in a very direct way. Painting with words has never been in so much danger of losing its status as a metaphor. Ultimately, it's a new way of creating art where your descriptive abilities become your paint brush.
+            </p>
+
+        </article>
+        <article class="about-article">
+            <h2>Why use AI to make art?</h2>
+            <p>
+                Lately, AI-generated art is a big subject of controversy. From <a href="https://www.nytimes.com/2022/09/02/technology/ai-artificial-intelligence-artists.html">winning art contests</a>, to <a href="https://arstechnica.com/information-technology/2022/09/flooded-with-ai-generated-images-some-art-communities-ban-them-completely/">trending in online art communities</a>, many people are understandably frustrated and worried about how artificial intelligence will impact the future of art. <br><br>
+                Is AI-generated art going to replace other forms of art? Is it an authentic expression of creativity? Does it even deserve the status of art? Thinking about these questions from multiple different perspectives is crucial to ensuring that these technologies enrich, rather than impoverish the future of visual arts. <br><br>
+                The goal of ·DEGA· is not to replace art created by artists through other means, but to simply provide an affordable alternative for those who may be unable to purchase original art created by such artists.
+                Art created by DALL·E 2 and other technologies allows originality <i>and</i> affordability to coexist, two concepts that have been historically opposed to one another. We hope that ·DEGA· be a step towards the democratization of art rather than the destruction of it.
+            </p>
+        </article>
+    </div>
+    
+</section>
+
+<footer>
+    <div class="footer">
+        <p class="flask">Powered by Flask</p>
+        <p class="copyright">©2022, DALL·Express Gallery of Art</p>
+        <p class="notice">DEGA is not affiliated with or sponsored by OpenAI</p>
+    </div>
+
+   
+</footer>
 
 {% endblock %}

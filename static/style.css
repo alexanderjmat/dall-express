@@ -17,6 +17,10 @@ body {
 
 }
 
+a {
+    color: black;
+}
+
 p {
     font-family: 'Anek Telugu', sans-serif;
     font-size: 1.1em;
@@ -288,33 +292,60 @@ footer {
 }
 
 
+/* About */
 
-/* gallery */
-
-.coming-soon {
+.about {
     display: flex;
+    flex-direction: column;
+}
+
+.about .head {
+    display: flex;
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("/static/content/design/DALL·E\ 2022-09-12\ 09.19.03\ -\ modern\ oil\ painting\ of\ a\ beige\ wall.jpeg");
+    height: 400px;
+    width: 100%;
     justify-content: center;
-    margin-top: 1em;
 }
 
-.placeholder {
+.about .header {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-    height: 512px;
-    width: 512px;
-    border: 1em dashed burlywood;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 4em;
+    font-weight: 400;
 }
 
-.placeholder-border {
+.about .content {
     display: flex;
-    margin-top: 1em;
-    border: 4px solid black;
-    width: fit-content;
-    padding: 0 1em 1em 1em;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: rgba(240, 240, 240, 0.9);
+    padding-top: 2em;
+    height: fit-content;
+    padding-bottom: 3em;
+
+}
+
+.about-article {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+
+}
+
+.about-article h2 {
+    font-size: 3em;
+    font-weight: 400;
+}
+
+.about-article p {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+.content .head {
+    display: flex;
 }
 
 

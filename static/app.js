@@ -4,11 +4,11 @@ const box = document.querySelector('.box')
 
 //function borrowed and modified from codepen: https://codepen.io/GreenSock/pen/mdqXLZL
 setTimeout(function () {
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 let limit = {max: 100, pullRatio: 0},
     getRandom = () => gsap.utils.random(-limit.max, limit.max),
-    round = value => Math.round(value * 10000) / 10000,
+    round = value => Math.round(value * 5000) / 5000,
     getModifier = home => value => {
       value = parseFloat(value);
       return round(value + (home - value) * limit.pullRatio) + "px";
@@ -30,7 +30,7 @@ function wander(element, homeX, homeY) {
       x: getModifier(homeX),
       y: getModifier(homeY)
     },
-    duration: gsap.utils.random(2.5, 4), 
+    duration: gsap.utils.random(1, 4), 
     ease: "tan.inOut",
     onComplete: () => wander(element, homeX, homeY)
   });
@@ -42,7 +42,7 @@ setTimeout(function () {
 
 let limit = {max: 100, pullRatio: 0},
     getRandom = () => gsap.utils.random(-limit.max, limit.max),
-    round = value => Math.round(value * 10000) / 10000,
+    round = value => Math.round(value * 5000) / 5000,
     getModifier = home => value => {
       value = parseFloat(value);
       return round(value + (home - value) * limit.pullRatio) + "px";
@@ -64,8 +64,8 @@ function wander(element, homeX, homeY) {
       x: getModifier(homeX),
       y: getModifier(homeY)
     },
-    duration: gsap.utils.random(2.5, 4), 
-    ease: "cosine.inOut",
+    duration: gsap.utils.random(1, 3), 
+    ease: "tan.inOut",
     onComplete: () => wander(element, homeX, homeY)
   });
 }

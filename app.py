@@ -110,7 +110,12 @@ def logout():
 
 @app.route("/about")
 def about():
-    return redirect("/")
+    cat_photo = Image.query.filter_by(prompt="Grey and white cat wearing a cowboy hat while riding a brown donkey impressionist oil painting").first()
+    if "user_id" not in session:
+        return render_template('about.html', cat_photo=cat_photo)
+    if "user_id" in session:
+        user = User.query.filter_by(id=session["user_id"]).first()
+        return render_template('about.html', user=user, cat_photo=cat_photo)
 
 @app.route("/gallery")
 def gallery():
