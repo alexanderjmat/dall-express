@@ -2,11 +2,9 @@
 
 Repository URL: https://github.com/alexanderjmat/dall-express
 
-## Purpose
+## Purpose and Features
 
 The DALL-Express Gallery of Art (·DEGA·) is the very first online art gallery dedicated to displaying and selling pieces created by DALL·E 2, OpenAI's natural language to image generation program. The website functions primarily to display and sell digital artwork, although this release is a demo and does not integrate E-commerce features.
-
-## Features
 
 ## User Flow
 
