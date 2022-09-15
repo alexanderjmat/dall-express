@@ -35,10 +35,19 @@ footer {
 
 .homepage {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    max-height: 80px;
 }
 
-.logo {
+.homepage .logo-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.homepage .logo {
     height: 80px;
     width: 60px;
     display: inline-block;
@@ -48,7 +57,6 @@ footer {
 .heading {
     font-size: 2em;
     font-family: Aboreto, cursive;
-    display: inline-block;
     margin-top: 30px;
     margin-left: 1vw;
     z-index: 10;
@@ -74,12 +82,14 @@ footer {
 }
 
 #login, #signup {
+    display: flex;
+    flex-direction: row;
     text-decoration: none;
     font-family: Aboreto, cursive;
     font-size: x-large;
-    margin-right: 1em;
-    margin-left: 1em;
     color: black;
+    justify-content: end;
+
 }
 
 #cart {
@@ -87,16 +97,53 @@ footer {
     height: 110%;
 }
 
-.navigation {
+.homepage .navigation {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
 }
 
-.main-menu {
+.homepage .cart-login-signup {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin-top: 2.25em;
+    margin-right: 2em;
+
+}
+
+.cart-login-signup ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+}
+.cart-login-signup ul li {
+    padding-left: 2em;
+    padding-right: 2em;
+
+}
+
+.navigation ul {
     display: flex;
     flex-direction: row;
     margin-top: 2.5em;
+    list-style: none;
 }
+
+.navigation ul li {
+    padding-left: 4em;
+    padding-right: 4em;
+
+
+}
+
+
+
+.navigation-main-ul li{
+    display: flex;
+}
+
+
 
 #about, #marketplace, #contact {
     display: flex;
@@ -105,8 +152,6 @@ footer {
     font-family: Raleway, sans-serif;
     color: black;
     font-size: 1.2em;
-    padding-left: 5em;
-    padding-right: 5em;
 }
 
 #menu-content-hr {
