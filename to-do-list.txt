@@ -1,3 +1,0 @@
-style marketplace
-add pages for each individal artwork
-add additional sub sections for each navbar item
