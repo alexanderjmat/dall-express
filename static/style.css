@@ -347,7 +347,7 @@ footer {
 
 .about .head {
     display: flex;
-    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("/static/content/design/DALL·E\ 2022-09-12\ 09.19.03\ -\ modern\ oil\ painting\ of\ a\ beige\ wall.jpeg");
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("/static/content/design/DALL·E\ 2022-09-12\ 09.19.03\ -\ modern\ oil\ painting\ of\ a\ beige\ wall.png");
     height: 400px;
     width: 100%;
     justify-content: center;
@@ -413,7 +413,7 @@ footer {
 }
 
 .marketplace-heading {
-    background: url('/static/content/design/DALL·E\ 2022-09-12\ 09.28.28\ -\ modern\ oil\ painting\ of\ a\ black\ night\ sky.jpeg');
+    background: url('/static/content/design/DALL·E\ 2022-09-12\ 09.28.28\ -\ modern\ oil\ painting\ of\ a\ black\ night\ sky.png');
     background-position: center;
     height: 250px;
 }
