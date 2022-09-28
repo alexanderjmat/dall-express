@@ -14,7 +14,8 @@ app = Flask(__name__)
 User = models.User
 Image = models.Image
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///dallexpress'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL', 'postgresql:///dallexpress')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'aj1234'
