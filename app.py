@@ -14,11 +14,15 @@ app = Flask(__name__)
 User = models.User
 Image = models.Image
 
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL', uri)
+# production or dev DB
+try:
+    prodURI = os.getenv('DATABASE_URL')
+    prodURI = prodURI.replace("postgres://", "postgresql://")
+    app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
+
+except:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///bvtjxjoooqqcyk:c160ece1ec664e097195e28461a956db1a98ccf1e40ae2733801944356da93bf@ec2-18-209-78-11.compute-1.amazonaws.com:5432/dfhinlee93slpu'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'aj1234'
