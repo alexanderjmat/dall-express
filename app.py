@@ -15,7 +15,7 @@ User = models.User
 Image = models.Image
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL', "postgres:///xanvnuxffomomh:2787253da64e4fadbed31aa3c24b7132ae66e7ef8b9b79a34ea50e515c57387b@ec2-34-194-40-194.compute-1.amazonaws.com:5432/dd1ak4cvae1ih4")
+    'DATABASE_URL', "postgresql://xanvnuxffomomh:2787253da64e4fadbed31aa3c24b7132ae66e7ef8b9b79a34ea50e515c57387b@ec2-34-194-40-194.compute-1.amazonaws.com:5432/dd1ak4cvae1ih4")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'aj1234'
