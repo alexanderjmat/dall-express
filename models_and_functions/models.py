@@ -32,12 +32,11 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     image = db.Column(db.Text, unique=True, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    mimetype = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text)
     prompt = db.Column(db.String(400), unique=True, nullable=False)
-    posted_by = db.Column(db.Integer, db.ForeignKey('users.username'), nullable=False)
+    posted_by = db.Column(db.String(20), db.ForeignKey('users.username'))
     average_rating = db.Column(db.Float, default=0)
-    imagetag_assignment = db.relationship("ImageTag", backref="images")
+    imagetag_assignment = db.relationship("ImageTag", backref="images", cascade="all, delete")
 
 class UserImages(db.Model):
 
@@ -55,7 +54,7 @@ class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(30), unique=True, nullable=False)
-    imagetag_assignment = db.relationship("ImageTag", backref="tags")
+    imagetag_assignment = db.relationship("ImageTag", backref="tags", cascade="all, delete")
 
 class ImageTag(db.Model):
     '''Image tag class'''
