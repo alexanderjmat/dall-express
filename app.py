@@ -14,8 +14,9 @@ app = Flask(__name__)
 User = models.User
 Image = models.Image
 
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL', "postgresql://xanvnuxffomomh:2787253da64e4fadbed31aa3c24b7132ae66e7ef8b9b79a34ea50e515c57387b@ec2-34-194-40-194.compute-1.amazonaws.com:5432/dd1ak4cvae1ih4")
+    'DATABASE_URL', "postgres://bvtjxjoooqqcyk:c160ece1ec664e097195e28461a956db1a98ccf1e40ae2733801944356da93bf@ec2-18-209-78-11.compute-1.amazonaws.com:5432/dfhinlee93slpu")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'aj1234'
