@@ -1,6 +1,7 @@
 # The DALL-Express Gallery of Art
 
 Deployment URL: https://dall-express.fly.dev/
+**Please note that the deployment is a demo presentation. Account creation and all e-commerce functionality is purposefully disabled.**
 Repository URL: https://github.com/alexanderjmat/dall-express
 
 ## Purpose and Features
